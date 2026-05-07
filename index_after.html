@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u.yukh_toys | Авторские игрушки</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comforter+Brush&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --white: #ffffff;
+            --black: #1a1a1a;
+            --light-gray: #fcfcfc;
+            --deep-gray: #f0f0f0;
+            --shadow: rgba(0,0,0,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+        font-family: 'Montserrat', sans-serif; /* Теперь русский и английский выглядят одинаково стильно */
+        background-color: #f0f0f0;
+        color: var(--black);
+        line-height: 1.6;
+        overflow-x: hidden; /* Важно для твоих огромных игрушек */
+        }
+        nav a, .lang-switch, p {
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.5px;
+        }
+
+        .hero h1, .main-title, footer h4, .label {
+        font-family: 'Comforter Brush', cursive !important;
+        }
+
+        /* --- ХЕДЕР --- */
+        header {
+            position: fixed;
+            top: 0; width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(243, 213, 139, 0.8);
+            backdrop-filter: blur(7px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--black); }
+
+        nav { display: flex; gap: 25px; align-items: center; }
+
+        nav a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover { opacity: 0.6; }
+
+        .lang-switch {
+            background: none;
+            border: 1px solid var(--black);
+            padding: 5px 10px;
+            cursor: pointer;
+            font-family: 'Monsterrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .lang-switch:hover { background: var(--black); color: var(--white); }
+
+        /* --- ОБЩИЕ СЕКЦИИ --- */
+        section { position: relative; width: 100%; padding: 120px 10%; }
+
+        .hero {
+            height: 107vh;
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Comforter Brush', cursive;
+            font-size: clamp(5rem, 15vw, 10rem);
+            transform: rotate(-2deg);
+            margin: 20px 0;
+        }
+
+        /* --- АНИМИРОВАННЫЕ ИГРУШКИ (ГИГАНТЫ) --- */
+        .toy-pic {
+            position: absolute;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .toy-pic img { 
+            width: 100%; 
+            height: auto; 
+            display: block;
+        }
+
+        .toy-left {
+            left: -11vw; 
+            top: 5%;
+            width: 55vw;
+            max-width: 900px;
+            animation: jitter 1.0s infinite steps(1);
+        }
+
+        .toy-right {
+            right: -15vw; 
+            bottom: -7%;
+            width: 45vw;
+            max-width: 770px;
+            animation: jitter 0.9s infinite steps(1);
+        }
+
+        /* Анимация (оставляем ту же резкую) */
+        @keyframes jitter {
+            0%   { transform: rotate(-5deg); }
+            50%  { transform: rotate(2deg); }
+            100% { transform: rotate(-5deg); }
+        }
+
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 15px 45px;
+            background-color: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 10; /* Чтобы быть поверх игрушек */
+        }
+
+        .cta-button:hover {
+            background-color: rgba(243, 213, 139, 0.8);
+            color: var(--black);
+            transform: translateY(-3px);
+        }
+        
+        /* --- СЕКЦИЯ О НАС --- */
+        .about-section {
+            background: var(--white);
+            padding: 100px 10%;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            flex: 1;
+            position: relative;
+            max-width: 450px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 20px 20px 0px var(--deep-gray); /* Эффект смещенной рамки */
+        }
+
+        .about-content {
+            flex: 1.2;
+        }
+
+        .about-content .label {
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #444;
+            font-size: 1rem;
+        }
+
+        .about-features {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .about-features li {
+            margin-bottom: 12px;
+            font-weight: 500;
+            color: var(--black);
+        }
+
+        .unp {
+            font-size: 0.7rem;
+            color: #aaa;
+            margin-top: 40px;
+        }
+
+        /* Адаптация для мобильных */
+        @media (max-width: 992px) {
+            .about-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 50px;
+            }
+            .about-image {
+                margin: 0 auto;
+            }
+        }
+        .portfolio-subtitle {
+            font-weight: 300;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        /* Можно добавить небольшую декоративную линию под текстом */
+        .portfolio-subtitle::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: #f3d58b;
+            margin: 20px auto 0;
+        }
+
+
+        /* --- ОБНОВЛЕННАЯ ГАЛЕРЕЯ (ХАОС) --- */
+        .gallery-mosaic {
+            display: grid;
+            /* Делаем строго 3 колонки на десктопе */
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 30px; /* Увеличил зазор для красоты наклонов */
+            margin-top: 50px;
+            padding: 0 10%;
+        }
+
+        /* Общие стили для элемента мозаики */
+        .mosaic-item {
+            background: white;
+            padding: 12px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            cursor: pointer;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            display: flex;
+            position: relative;
+            aspect-ratio: 1 / 1.1; 
+        }
+
+        /* Эффект при наведении - "всплывание" и выпрямление */
+        .mosaic-item:hover {
+            transform: scale(1.05) rotate(0deg) !important;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+
+        .mosaic-item::after {
+            content: ''; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            /* Рисуем лупу через background-image (SVG) */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%234CAF50'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            opacity: 0;
+            transition: 0.3s;
+            pointer-events: none;
+            z-index: 5;
+        }
+        .mosaic-item:hover::after {
+            opacity: 1; /* Показываем лупу при наведении */
+        }
+
+        .mosaic-item:hover img {
+            transform: scale(1.05); /* Легкое увеличение самого фото */
+            filter: brightness(0.8); /* Немного притемняем для контраста */
+        }
+
+        .mosaic-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            filter: grayscale(10%) sepia(5%);
+            transition: 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .mosaic-item:hover img {
+            filter: grayscale(0%) sepia(0%);
+        }
+
+        /* Классы размеров (Spanning) */
+        .size-sm, .size-md, .size-lg { grid-row: auto; }
+
+        /* Классы поворотов для хаоса */
+        .rotate-l { transform: rotate(-3deg); }
+        .rotate-r { transform: rotate(3deg); }
+
+        /* Адаптация сетки для мобильных */
+        @media (max-width: 992px) {
+            .gallery-mosaic {
+                grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+                padding: 0 5%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .gallery-mosaic {
+                grid-template-columns: 1fr; /* 1 колонка на телефонах */
+                gap: 20px;
+            }
+            .mosaic-item {
+                aspect-ratio: 1 / 1; /* Квадраты на мобилках */
+            }
+        }
+
+
+        #scroll-progress {
+        position: fixed;
+         top: 0; left: 0;
+         width: 0%; height: 4px;
+        background: #f3d58b; /* Твой золотистый цвет */
+        z-index: 2001;
+        }
+
+
+
+
+
+        /* --- СТИЛИ ДЛЯ УВЕЛИЧЕННОГО ПРОСМОТРА (LIGHTBOX) --- */
+        .lightbox {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .lightbox.active { display: flex; opacity: 1; }
+
+        /* Контейнер-карточка внутри лайтбокса */
+        .lb-container {
+            display: flex;
+            flex-direction: row;
+            background: white; /* Белый фон, чтобы текст был виден */
+            color: #1a1a1a;
+            max-width: 900px;
+            width: 95%;
+            max-height: 85vh;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        #lightbox-img {
+            width: 50%;
+            max-height: 85vh;
+            object-fit: cover;
+            display: block;
+        }
+
+        .lb-info {
+        padding: 40px;
+        width: 50%;
+        position: relative;
+        /* Светлый уютный фон с паттерном в горошек */
+        background-color: #ffffff;
+        background-image: radial-gradient(#f3d58b 0.8px, transparent 0.8px);
+        background-size: 16px 16px;
+    }
+
+    /* Декоративный элемент (клубок ниток) в углу */
+    .lb-info::before {
+        content: '🧶'; 
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 2.5rem;
+        opacity: 0.2; /* Делаем его едва заметным, как водяной знак */
+        transform: rotate(-15deg);
+    }
+
+    /* Красивая разделительная линия для заголовка */
+    #lb-title {
+        font-family: 'Comforter Brush', cursive;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+        border-bottom: 2px dashed #f3d58b; /* Пунктирная линия как шов */
+        padding-bottom: 10px;
+        display: inline-block;
+    }
+
+    /* Стилизация характеристик */
+    .lb-info p {
+        margin-bottom: 12px;
+        border-left: 3px solid #f3d58b; /* Вертикальная полоска слева */
+        padding-left: 10px;
+    }
+
+
+
+        .close-lightbox {
+            position: absolute;
+            top: 20px; right: 25px;
+            color: white; font-size: 40px; cursor: pointer; z-index: 2100;
+        }
+
+        /* Центрирование модалки "Заказать" */
+           .modal-content {
+            background-color: #fff;
+            /* Такой же паттерн, как в лайтбоксе для единства стиля */
+            background-image: radial-gradient(#4CAF50 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+            
+            margin: 10% auto;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 450px;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+
+        /* Мобильная версия: картинка сверху, текст снизу */
+        @media (max-width: 768px) {
+            .lb-container { flex-direction: column; overflow-y: auto; }
+            #lightbox-img { width: 100%; height: 300px; }
+            .lb-info { width: 100%; padding: 20px; }
+        }
+
+
+
+
+        .order-steps { background: #f9f9f9; padding: 100px 10%; }
+        .steps-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 40px; 
+        }
+        .step-item { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 15px; 
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+        .step-item span { 
+            font-family: 'Comforter Brush', cursive; 
+            font-size: 3.5rem; 
+            color: #f3d58b; 
+            display: block; 
+            margin-bottom: 15px;
+        }
+        .step-item p { font-size: 0.9rem; color: #555; }
+
+
+
+
+
+
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px 5% 50px; /* Немного уменьшил боковые отступы, чтобы всё влезло */
+            display: grid;
+            /* Четко задаем 4 колонки одинаковой ширины */
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 30px;
+            align-items: start;
+        }
+
+        .footer-map-col {
+            width: 100%;
+        }
+
+        .map-box {
+            width: 100%;
+            height: 180px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        .map-box iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            filter: grayscale(100%) invert(90%) contrast(90%); 
+        }
+
+
+           .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icon-img {
+            width: 30px;
+            height: 30px;
+            filter: invert(1); /* Делает черные иконки белыми */
+            transition: 0.3s;
+        }
+
+        .social-icon-img:hover {
+            transform: translateY(-3px);
+            opacity: 0.8;
+        }
+
+        .social-links-container {
+            display: flex;
+            flex-direction: column; /* Ссылки друг под другом */
+            gap: 12px;
+        }
+
+        /* Сама ссылка (ряд: иконка + текст) */
+        .social-link-item {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Расстояние между иконкой и текстом */
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.8); /* Белый полупрозрачный текст */
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        /* Настройка иконок */
+        .social-link-item .social-icon-img {
+            width: 20px; /* Компактный размер */
+            height: 20px;
+            filter: invert(1); /* Делаем иконки белыми */
+        }
+
+        /* Эффект при наведении на всю строку */
+        .social-link-item:hover {
+            color: var(--white);
+            transform: translateX(5px); /* Легкий сдвиг вправо */
+        }
+        /* На мобилках выстраиваем всё в один столбик */
+        @media (max-width: 992px) {
+            footer {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .map-box {
+                height: 250px;
+                max-width: 400px;
+                margin: 0 auto;
+            }
+        }
+
+        footer h4 { 
+            font-family: 'Comforter Brush', cursive; 
+            font-size: 3rem; 
+            margin-bottom: 20px; 
+            color: var(--white);
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .copyright {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #333;
+            font-size: 0.7rem;
+            color: #555;
+        }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 1s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .modal-order {
+            display: none; 
+            position: fixed !important; /* !important гарантирует, что это правило победит */
+            z-index: 9999 !important;   /* Чтобы быть выше всех элементов */
+            left: 0 !important; 
+            top: 0 !important; 
+            width: 100% !important; 
+            height: 100% !important;
+            background: rgba(0,0,0,0.6) !important; 
+            backdrop-filter: blur(5px);
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .social-links-modal { display: flex; flex-direction: column; gap: 15px; }
+        .soc-btn {
+         padding: 12px; border-radius: 10px; text-decoration: none; color: white; font-weight: 600;
+        }
+
+        .tg { background: #0088cc; }
+        .inst { background: #e1306c; }
+
+
+    </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+    <header>
+        <a href="#" class="logo">u.yukh_toys</a>
+        <nav>
+            <a href="#portfolio" data-i18n="nav-portfolio">Портфолио</a>
+            <a href="#about" data-i18n="nav-about">О нас</a>
+            <a href="#order" data-i18n="nav-order">Заказать</a>
+            <a href="#delivery" data-i18n="nav-delivery">Доставка</a>
+            <button class="lang-switch" onclick="toggleLanguage()">EN</button>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="toy-pic toy-left"><img src="toy_left.png" alt=""></div>
+        <div class="toy-pic toy-right"><img src="toy_right.png" alt=""></div>
+
+        <p style="letter-spacing: 5px; font-size: 0.7rem;" data-i18n="hero-sub">UNIQUE COLLECTION</p>
+        <h1 data-i18n="hero-title">u.yukh_toys</h1>
+        <p style="max-width: 400px; text-align: center; font-weight: 300;" data-i18n="hero-desc">Тёплые игрушки, созданные, чтобы стать частью вашей семейной истории.</p>
+        <a href="#portfolio" class="cta-button" data-i18n="hero-btn">Посмотреть работы</a>
+    </section>
+
+
+
+    <section id="about" class="about-section reveal">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="womanherself.jpeg" alt="Мастер u.yukh_toys">
+                <div class="image-accent"></div> </div>
+
+            <div class="about-content">
+                <p class="label">Our Story</p>
+                <h2 data-i18n="about-title">Сердце, вложенное в каждую петельку</h2>
+                
+                <div class="about-text">
+                    <p data-i18n="about-text">
+                        Привет! Меня зовут Ульяна, и я мама, создающая маленькие миры. По образованию я врач, и эта тяга к заботе о жизни нашла свое продолжение в творчестве. Мои медицинские знания превратились в перфекционизм: я выбираю только самые безопасные, натуральные материалы и слежу за безупречностью каждого шва.
+                    </p>
+                    <p data-i18n="about-p2">
+                        Для меня игрушка — это не просто предмет интерьера. Это будущий член семьи, свидетель первых слов и хранитель детских секретов. Уже более 100 моих работ нашли свои дома по всему миру, принося тепло и уют.
+                    </p>
+                    <ul class="about-features">
+                        <li data-i18n="feat-1">✨ Профессиональный подход и внимание к деталям</li>
+                        <li data-i18n="feat-2">✨ Только гипоаллергенные материалы</li>
+                        <li data-i18n="feat-3">✨ Уникальный дизайн с душой</li>
+                    </ul>
+                   
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="portfolio" class="portfolio">
+        <div class="torn-divider"></div>
+        
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 data-i18n="port-title" class="reveal" style="margin-bottom: 15px;">Выбранные работы</h2>
+            <p data-i18n="port-subtitle" class="reveal portfolio-subtitle" style="max-width: 600px; margin: 0 auto; color: #2d2d2d; font-size: 1rem;">
+                Каждое изделие — это результат многих часов кропотливого труда и любви. Листайте галерею, чтобы найти своего идеального друга.
+            </p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="font-size: 0.85rem; color: #888; text-transform: uppercase; letter-spacing: 2px;">
+                <span style="margin-right: 10px;">✨</span> 
+                <span data-i18n="gallery-hint">Нажмите на фото, чтобы узнать детали</span> 
+                <span style="margin-left: 10px;">✨</span>
+            </p>
+        </div>
+
+
+        <div class="gallery-mosaic">
+            <div class="mosaic-item rotate-l reveal" onclick="openLightbox(this)" 
+                data-price="55 BYN" 
+                data-material="Полухлопок, холлофайбер" 
+                data-size="Высота: 25 см | Ширина: 15 см"
+                data-care="Ручная стирка при 30°C. Сушить на горизонтальной поверхности.">
+                <img src="png1.jpeg" alt="Мишка в уютном свитере">
+            </div>
+
+            <div class="mosaic-item rotate-r reveal" onclick="openLightbox(this)"
+                data-price="35 BYN" 
+                data-material="Хлопок 100%, проволочный каркас" 
+                data-size="Высота: 17 см | Ширина: 10 см"
+                data-care="Сухая чистка мягкой щеточкой. Избегать влаги на каркас.">
+                <img src="png2.jpeg" alt="Цветочек Подсолнух">
+            </div>
+
+            <div class="mosaic-item reveal" onclick="openLightbox(this)"
+                data-price="35 BYN" 
+                data-material="Плюшевая пряжа, безопасные глазки" 
+                data-size="Высота: 7 см | Ширина: 7 см"
+                data-care="Допускается бережная ручная стирка в мешочке.">
+                <img src="png3.jpeg" alt="Озорной Мопсик">
+            </div>
+
+            <div class="mosaic-item rotate-l reveal" onclick="openLightbox(this)"
+                data-price="45 BYN" 
+                data-material="Фактурная пряжа (букле), хлопок" 
+                data-size="Высота: 18 см | Ширина: 12 см"
+                data-care="Не отбеливать. Расчесывать ворс мягкой расческой.">
+                <img src="png4.jpeg" alt="Пушистый Барашек">
+            </div>
+
+            <div class="mosaic-item reveal" onclick="openLightbox(this)"
+                data-price="40 BYN" 
+                data-material="Полухлопок, фетровые детали" 
+                data-size="Высота: 14 см | Ширина: 11 см"
+                data-care="Точечная очистка загрязнений влажной салфеткой.">
+                <img src="png5.jpeg" alt="Малыш Пингвиненок">
+            </div>
+
+            <div class="mosaic-item rotate-r reveal" onclick="openLightbox(this)"
+                data-price="от 35 BYN за каждого" 
+                data-material="Премиум хлопок" 
+                data-size="Размер: 12х5 см"
+                data-care="Хранить в сухом месте. Не деформировать.">
+                <img src="png6.jpeg" alt="Праздничные друзья">
+            </div>
+
+            <div class="mosaic-item reveal" onclick="openLightbox(this)"
+                data-price="45 BYN" 
+                data-material="Премиум хлопок, вышивка имени" 
+                data-size="Высота: 15 см | Ширина: 8 см"
+                data-care="Ручная стирка. Вышивку не тереть жесткими щетками.">
+                <img src="png7.jpeg" alt="Мишка 'Верный друг'">
+            </div>
+
+            <div class="mosaic-item rotate-l reveal" onclick="openLightbox(this)"
+                data-price="50 BYN" 
+                data-material="Полухлопок, блестящая нить" 
+                data-size="Высота: 20 см | Ширина: 15 см"
+                data-care="Бережное обращение с блестящими элементами.">
+                <img src="png8.jpeg" alt="Сказочные Дракоши">
+            </div>
+
+            <div class="mosaic-item rotate-r reveal" onclick="openLightbox(this)"
+                data-price="55 BYN" 
+                data-material="Премиум хлопок" 
+                data-size="Высота: 22 см | Ширина: 13 см"
+                data-care="Шляпку снимать перед стиркой игрушки.">
+                <img src="png10.jpeg" alt="Винтажный Мишка в шляпке">
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <div class="lb-container" onclick="event.stopPropagation()">
+                <img id="lightbox-img" src="" alt="">
+                <div class="lb-info">
+                    <h3 id="lb-title">Игрушка</h3>
+                    <p><strong data-i18n="lb-price-label">Цена:</strong> <span id="lb-price" style="color: #4CAF50; font-weight: 800;"></span></p>
+                    <p><strong data-i18n="lb-size-label">Размер:</strong> <span id="lb-size"></span></p>
+                    <p><strong data-i18n="lb-mat-label">Материал:</strong> <span id="lb-material"></span></p>
+                    <p><strong data-i18n="lb-care-label">Уход:</strong> <span id="lb-care" style="font-style: italic; font-size: 0.9rem;"></span></p>
+                    
+                    <a href="javascript:void(0)" class="cta-button" onclick="openOrderModal()" data-i18n="lb-btn" style="margin-top: 15px; display: inline-block;">Хочу такую</a>
+                </div>
+            </div>
+        </div>
+
+
+
+    <section class="order-steps reveal">
+        <h2 style="text-align: center; margin-bottom: 50px;" data-i18n="order-title">Как поселить игрушку у себя?</h2>
+        <div class="steps-grid">
+            <div class="step-item">
+                <span>01</span>
+                <p data-i18n="step-1">Напишите мне в Instagram или Telegram для выбора модели и уточнения наличия.</p>
+            </div>
+            <div class="step-item">
+                <span>02</span>
+                <p data-i18n="step-2">Обсуждаем детали (цвет, аксессуары) и сроки изготовления (если игрушки нет в наличии).</p>
+            </div>
+            <div class="step-item">
+                <span>03</span>
+                <p data-i18n="step-3">Бережная упаковка и отправка к вам удобным способом в течение 1-2 дней.</p>
+            </div>
+        </div>
+
+    </section>
+
+
+
+    <div id="order-modal" class="modal-order">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeOrderModal()">&times;</span>
+            <h3 style="font-family: 'Comforter Brush', cursive; font-size: 2.5rem; margin-bottom: 20px;" data-i18n="modal-title">Заказать чудо</h3>
+            <p style="font-size: 0.9rem; margin-bottom: 20px;" data-i18n="modal-desc">Выберите удобный способ связи:</p>
+            <div class="social-links-modal">
+                <a href="https://www.instagram.com/u.yukh_toys/" target="_blank" class="soc-btn inst">Instagram</a>
+                <a href="https://www.tiktok.com/@u.yukh_toys" target="_blank" class="soc-btn tg">TikTok</a>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section id="order" style="text-align: center; padding: 60px 20px; background: var(--white);">
+        <h2 style="font-family: 'Comforter Brush', cursive; font-size: 3rem; margin-bottom: 20px;" data-i18n="cta-title">Готовы завести своего друга?</h2>
+        <p style="margin-bottom: 30px; color: #666;" data-i18n="cta-desc">Нажмите на кнопку ниже, чтобы выбрать удобный способ связи.</p>
+        <a href="javascript:void(0)" class="cta-button" onclick="openOrderModal()" data-i18n="cta-btn">Заказать игрушку</a>
+    </section>
+
+
+
+
+    <footer>
+        <div class="footer-col">
+            <h4>u.yukh_toys</h4>
+            <p data-i18n="footer-about">Мы создаем не просто игрушки, а маленьких друзей из натуральных материалов.</p>
+        </div>
+
+        <div class="footer-col" id="delivery">
+            <p style="color: white; font-weight: 600; margin-bottom: 10px;" data-i18n="nav-delivery">Доставка</p>
+            <p data-i18n="delivery-info">Отправляем Европочтой, Белпочтой. Доступен самовывоз (Минск, Партизанская)</p>
+        </div>
+
+        <div class="footer-col">
+            <p style="color: white; font-weight: 600; margin-bottom: 15px;" data-i18n="footer-contacts">Связаться с нами</p>
+            <div class="social-links-container">
+                <a href="https://www.instagram.com/u.yukh_toys/" target="_blank" class="social-link-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" class="social-icon-img" alt="Instagram">
+                    <span>Instagram</span>
+                </a>
+                <a href="https://www.tiktok.com/@u.yukh_toys" target="_blank" class="social-link-item">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" class="social-icon-img" alt="TikTok">
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="footer-map-col">
+            <p style="color: white; font-weight: 600; margin-bottom: 10px;">Мы на карте</p>
+            <div class="map-box">
+                <iframe src="https://yandex.ru/map-widget/v1/?ll=27.630000%2C53.875000&z=14&l=map&pt=27.630000%2C53.875000" allowfullscreen="true"></iframe>
+            </div>
+        </div>
+
+        <div class="copyright">
+            © 2026 u.yukh_toys. Made with love for your family.
+        </div>
+    </footer>
+
+
+
+
+    
+    <script>
+        // --- ЛОГИКА ПЕРЕКЛЮЧЕНИЯ ЯЗЫКА ---
+        const translations = {
+            'ru': {
+                'nav-portfolio': 'Портфолио',
+                'nav-about': 'О нас',
+                'nav-delivery': 'Доставка',
+                'hero-sub': 'УНИКАЛЬНАЯ КОЛЛЕКЦИЯ',
+                'hero-title': 'u.yukh_toys',
+                'hero-desc': 'Тёплые игрушки, созданные, чтобы стать частью вашей семейной истории.',
+                'port-title': 'Выбранные работы',
+                'footer-about': 'Мы создаем не просто игрушки, а маленьких друзей из натуральных материалов.',
+                'delivery-info': 'Отправляем Европочтой, Белпочтой. Доступен самовывоз (ст.метро Партизанская)',
+                'footer-contacts': 'Контакты',
+                'hero-btn': 'Посмотреть работы',
+                'about-label': 'Наша история',
+                'about-title': 'Сердце в каждой петельке',
+                'about-text': 'Привет! Меня зовут Ульяна, и я мама, создающая маленькие миры. По образованию я врач, и эта тяга к заботе о жизни нашла свое продолжение в творчестве. Мои медицинские знания превратились в перфекционизм: я выбираю только самые безопасные, натуральные материалы и слежу за безупречностью каждого шва.',
+                'about-p2': 'Для меня игрушка — это не просто предмет интерьера. Это будущий член семьи, свидетель первых слов и хранитель детских секретов. Уже более 100 моих работ нашли свои дома по всему миру, принося тепло и уют.',
+                'feat-1': '✨ Профессиональный подход и внимание к деталям', 
+                'feat-2': '✨ Только гипоаллергенные материалы',
+                'feat-3': '✨ Уникальный дизайн с душой',
+                'order-title': 'Как поселить игрушку у себя?',
+                'step-1': 'Напишите мне в Direct или Telegram для выбора модели и уточнения наличия.',
+                'step-2': 'Обсуждаем детали (цвет, аксессуары) и сроки изготовления.',
+                'step-3': 'Бережная упаковка и отправка к вам в течение 1-2 дней.',
+                'port-title': 'Выбранные работы',
+                'port-subtitle': 'Каждое изделие — это результат многих часов кропотливого труда и любви. Листайте галерею, чтобы найти своего идеального друга.',
+                'lb-price-label': 'Цена:',
+                'lb-mat-label': 'Материал:',
+                'lb-size-label': 'Размер:',
+                'lb-btn': 'Хочу такую',
+                'modal-title': 'Заказать чудо',
+                'modal-desc': 'Выберите удобный способ связи:',
+                'cta-title': 'Готовы завести своего друга?',
+                'cta-desc': 'Нажмите на кнопку ниже, чтобы обсудить детали заказа.',
+                'cta-btn': 'Заказать игрушку',
+                'nav-order': 'Заказать',
+                'gallery-hint': 'Нажмите на фото, чтобы рассмотреть детали и цену',
+            },
+            'en': {
+                'nav-portfolio': 'Portfolio',
+                'nav-about': 'About',
+                'nav-delivery': 'Shipping',
+                'hero-sub': 'UNIQUE COLLECTION',
+                'hero-title': 'u.yukh_toys',
+                'hero-desc': 'Warm handmade toys designed to become a part of your family story.',
+                'port-title': 'Selected Works',
+                'footer-about': 'We create more than just toys – we make little friends from natural materials.',
+                'delivery-info': 'Shipping via Europost and Belpost. Pickup is available at Partizanskaya metro station.',
+                'footer-contacts': 'Contacts',
+                'hero-btn': 'View Portfolio',
+                'about-label': 'Our Story',
+                'about-title': 'Heart in Every Stitch',
+                'about-text': 'Hi! My name is Ulyana, and I am a mother who creates little worlds. With a doctors degree this passion for caring for life has found its way into my creativity. My medical knowledge has evolved into perfectionism: I choose only the safest, most natural materials and ensure the perfection of every seam.',
+                'about-p2': 'For me, a toy is more than just an interior item. It is a future member of the family, a witness to first words, and a keeper of childrens secrets. Over 100 of my works have found homes around the world, bringing warmth and comfort.',
+                'feat-1': '✨ Professional approach and attention to detail',
+                'feat-2': '✨ Only hypoallergenic materials',
+                'feat-3': '✨ Unique design with a soul',
+                'order-title': 'How to order a toy?',
+                'step-1': 'Message me on Instagram or Telegram to choose a model and check availability.',
+                'step-2': 'We discuss details (color, accessories) and production time.',
+                'step-3': 'Careful packaging and shipping to you within 1-2 days.',
+                'port-title': 'Selected Works',
+                'port-subtitle': 'Every toy is a result of many hours of meticulous work and love. Browse the gallery to find your perfect little friend.',
+                'lb-price-label': 'Price:',
+                'lb-mat-label': 'Material:',
+                'lb-size-label': 'Size:',
+                'lb-btn': 'I want this',
+                'modal-title': 'Order a Miracle',
+                'modal-desc': 'Choose a convenient way to contact me:',
+                'cta-title': 'Ready to get your friend?',
+                'cta-desc': 'Click the button below to discuss your order details.',
+                'cta-btn': 'Order a Toy',
+                'nav-order': 'Order Now',
+                'gallery-hint': 'Click on the photo to see details and price',
+            }
+        };
+
+        let currentLang = 'ru';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            document.querySelector('.lang-switch').innerText = currentLang === 'ru' ? 'EN' : 'RU';
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                el.innerText = translations[currentLang][key];
+            });
+        }
+
+        // --- АНИМАЦИЯ СКРОЛЛА ---
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById("scroll-progress").style.width = scrolled + "%";
+            reveal(); // твоя старая функция
+        });
+
+        // --- ЛОГИКА ГАЛЕРЕИ (LightBox) ---
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+       function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            const altText = element.querySelector('img').alt;
+            
+            document.getElementById('lightbox-img').src = imgSrc;
+            document.getElementById('lb-title').innerText = altText;
+            
+            // Цена (сделаем жирнее)
+            document.getElementById('lb-price').innerText = element.getAttribute('data-price') || "По запросу";
+            
+            // Материал
+            document.getElementById('lb-material').innerText = element.getAttribute('data-material') || "Натуральные материалы";
+            
+            // Размер (теперь тут будет "Высота: Х см | Ширина: Y см")
+            document.getElementById('lb-size').innerText = element.getAttribute('data-size') || "Уточняйте у мастера";
+            
+            // Уход (новое поле)
+            document.getElementById('lb-care').innerText = element.getAttribute('data-care') || "Бережная ручная стирка";
+            
+            document.getElementById('lightbox').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            // Возвращаем скролл
+            document.body.style.overflow = 'auto';
+            // Небольшая задержка перед очисткой src, чтобы не было "мигания"
+            setTimeout(() => { lightboxImg.src = ''; }, 400);
+        }
+
+        // Закрытие по нажатию Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function openOrderModal() { document.getElementById('order-modal').style.display = 'block'; }
+        function closeOrderModal() { document.getElementById('order-modal').style.display = 'none'; }
+     
+        
+        window.onclick = function(event) {
+            let modal = document.getElementById('order-modal');
+                if (event.target == modal) { modal.style.display = "none"; }
+            }
+
+    </script>
+
+</body>
+</html>
